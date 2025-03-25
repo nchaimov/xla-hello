@@ -19,8 +19,9 @@ def main():
     world_size = xr.world_size()
     rank = xr.global_ordinal()
     is_master = xm.is_master_ordinal()
+    hostname=socket.gethostname()
 
-    print(f'{hostname}: Hello from {rank} of {world_size}, XLA rank {xla_rank} of {xla_world_size} {"MASTER" if xla_is_master else ""}')
+    print(f'{hostname}: Hello from {rank} of {world_size}, {"MASTER" if is_master else ""}')
 
     dist.barrier()
 
