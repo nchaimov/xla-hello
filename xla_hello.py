@@ -16,8 +16,8 @@ import torch_xla.distributed.xla_backend
 def main():
     torch.distributed.init_process_group('xla')
 
-    world_size = xlr.world_size()
-    rank = xlr.global_ordinal()
+    world_size = xr.world_size()
+    rank = xr.global_ordinal()
     is_master = xm.is_master_ordinal()
 
     print(f'{hostname}: Hello from {rank} of {world_size}, XLA rank {xla_rank} of {xla_world_size} {"MASTER" if xla_is_master else ""}')
