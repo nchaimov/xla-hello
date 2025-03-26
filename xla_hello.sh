@@ -9,9 +9,6 @@ export FI_EFA_FORK_SAFE=1
 export BUCKET_CAP_MB=512
 export XLA_TRANSFER_SEED_ASYNC=1
 
-# Don't try to initialize CUDA
-export PYTORCH_NVML_BASED_CUDA_CHECK=0
-
 master_addr=$(scontrol show hostnames "$SLURM_JOB_NODELIST" | head -n 1)
 export MASTER_ADDR=$master_addr
 export MASTER_PORT=$(expr 10000 + $(echo -n $SLURM_JOBID | tail -c 4) )
